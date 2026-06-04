@@ -3,3 +3,10 @@
     { "source": "/(.*)", "destination": "/public/index.html" }
   ]
 }
+{
+  "rewrites": [
+    { "source": "/privacy", "destination": "/public/privacy.html" },
+    { "source": "/terms",   "destination": "/public/terms.html" },
+    { "source": "/(.*)",    "destination": "/public/index.html" }
+  ]
+}
