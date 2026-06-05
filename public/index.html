@@ -975,9 +975,15 @@ footer a{color:rgba(255,255,255,0.4);text-decoration:none}
 <!-- SUCCESS -->
 <div class="success-screen" id="successScreen">
   <div class="success-mark">✓</div>
-  <h2 class="success-h">You are in, mama.</h2>
-  <p class="success-p" id="successMsg">Welcome to EVIE AI. Check your email for login details.</p>
-  <button class="btn-hero" style="width:auto;padding:14px 40px" onclick="document.getElementById('successScreen').classList.remove('show')">Open EVIE App</button>
+  <h2 class="success-h">You're in, mama! &#129293;</h2>
+  <p class="success-p" id="successMsg">Your welcome email is on its way! Go to <strong>app.tryheyevie.com</strong> and create your account using the email you just purchased with.</p>
+      <div style="background:rgba(255,255,255,.12);border-radius:14px;padding:16px;margin:16px 0;text-align:left">
+      <p style="font-size:13px;color:#fff;font-weight:800;margin-bottom:8px">&#128233; Check your email now</p>
+      <p style="font-size:12px;color:rgba(255,255,255,.75);line-height:1.7;margin-bottom:6px">Your welcome email is on its way from <strong>heyevie@tryheyevie.com</strong></p>
+      <p style="font-size:12px;color:rgba(255,255,255,.6);line-height:1.7;margin-bottom:6px">&#128269; <strong>Check your spam or junk folder</strong> if you do not see it within a few minutes and mark it as not spam.</p>
+    </div>
+    <a href="https://app.tryheyevie.com" style="display:inline-block;background:linear-gradient(135deg,#c9963a,#e8b84a);color:#1a0d08;font-size:15px;font-weight:900;text-decoration:none;border-radius:26px;padding:14px 32px;margin-bottom:12px">Open Hey Evie &#8594;</a><br/>
+    <button class="btn-hero" style="width:auto;padding:14px 40px" onclick="document.getElementById('successScreen').classList.remove('show')">Open EVIE App</button>
 </div>
 
 <script>
@@ -1209,6 +1215,22 @@ function closePreview() {
   document.body.style.overflow = "";
 }
 
+
+  // Auto-show success screen if redirected from Stripe
+  document.addEventListener('DOMContentLoaded', function(){
+    if(window.location.search.indexOf('success=true') >= 0){
+      var ss = document.getElementById('successScreen');
+      if(ss){
+        ss.classList.add('show');
+        // Scroll to top
+        window.scrollTo(0,0);
+        // Clean URL without reloading
+        if(window.history && window.history.replaceState){
+          window.history.replaceState({}, document.title, window.location.pathname);
+        }
+      }
+    }
+  });
 </script>
 
 <!-- PREVIEW MODAL -->
