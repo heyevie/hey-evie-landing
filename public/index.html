@@ -1049,8 +1049,8 @@ footer a{color:rgba(255,255,255,0.4);text-decoration:none}
 
   // ── STRIPE PAYMENT LINKS ─────────────────────────────────
   // Replace these with your actual Stripe Payment Link URLs
-  const STRIPE_MONTHLY = 'https://buy.stripe.com/eVqcN71mB55d3qleMh0co00'; // $27/month
-  const STRIPE_VIP     = 'https://buy.stripe.com/3cI6oJd5j9lt5yt7jP0co01'; // $197 lifetime
+  const STRIPE_MONTHLY = 'https://buy.stripe.com/3cI6oJd5j9lt5yt7jP0co01'; // $27/month
+  const STRIPE_VIP     = 'https://buy.stripe.com/eVqcN71mB55d3qleMh0co00'; // $197 lifetime
   function goToStripe(plan) {
     const url = plan === 'vip' ? STRIPE_VIP : STRIPE_MONTHLY;
     if (url.includes('STRIPE_LINK')) {
