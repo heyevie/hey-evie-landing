@@ -1009,31 +1009,7 @@ footer a{color:rgba(255,255,255,0.4);text-decoration:none}
 </div>
 
 <!-- PAYMENT MODAL -->
-<div class="modal-bg" id="payModal">
-  <div class="modal">
-    <button class="modal-close" onclick="closeModal()">×</button>
-    <div class="modal-drag"></div>
-    <h2 class="modal-title" id="mTitle">Join Evee</h2>
-    <p class="modal-sub" id="mSub">Enter your details and we will take you to secure checkout.</p>
-    <div class="modal-summary">
-      <div><div class="modal-plan-name" id="mPlan">EVEE Access</div><div class="modal-plan-desc" id="mDesc">Monthly membership</div></div>
-      <div class="modal-price" id="mPrice">$47</div>
-    </div>
 
-    <label class="f-label">Your Name</label>
-    <input class="f-input" placeholder="First name" id="fName"/>
-    <label class="f-label">Email Address</label>
-    <input class="f-input" type="email" placeholder="you@email.com" id="fEmail"/>
-
-    <button class="modal-submit" id="mSubmit" onclick="pay()">Join Evee — <span id="mBtnPrice">$47/month</span></button>
-    <p class="modal-secure">Secured by Stripe · 256-bit SSL · Cancel anytime</p>
-    <div class="upsell-in-modal" id="uimBox">
-      <div class="uim-title">Want everything — forever?</div>
-      <div class="uim-body">Upgrade to Lifetime VIP for a one-time payment of $497 and unlock all 9 courses, Hook Vault, Money Dashboard, video lessons, and VIP coaching. No subscription, no recurring fees — yours forever.</div>
-      <button class="uim-btn" onclick="closeModal();showPage('upsellVip')">See Lifetime VIP — $497 One-Time</button>
-    </div>
-  </div>
-</div>
 
 <!-- TOAST -->
 <div class="toast" id="toast"><div><div class="t-title" id="tTitle">Welcome to EVEE</div><div class="t-sub" id="tSub"></div></div></div>
@@ -1103,7 +1079,7 @@ function openModal(plan) {
   document.body.style.overflow = 'hidden';
 }
 function closeModal() { document.getElementById('payModal').classList.remove('open'); document.body.style.overflow=''; }
-document.getElementById('payModal').addEventListener('click', e=>{ if(e.target===document.getElementById('payModal')) closeModal(); });
+document.addEventListener('DOMContentLoaded',function(){ var pm=document.getElementById('payModal'); if(pm) pm.addEventListener('click', function(e){ if(e.target===pm) closeModal(); }); });
 // upgradeInModal removed — no $10 upsell
 function selTab(el) { document.querySelectorAll('.pay-tab').forEach(t=>t.classList.remove('on')); el.classList.add('on'); }
 
@@ -1330,5 +1306,31 @@ function closePreview() {
   </div>
 </div>
 
+
+<div class="modal-bg" id="payModal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()">×</button>
+    <div class="modal-drag"></div>
+    <h2 class="modal-title" id="mTitle">Join Evee</h2>
+    <p class="modal-sub" id="mSub">Enter your details and we will take you to secure checkout.</p>
+    <div class="modal-summary">
+      <div><div class="modal-plan-name" id="mPlan">EVEE Access</div><div class="modal-plan-desc" id="mDesc">Monthly membership</div></div>
+      <div class="modal-price" id="mPrice">$47</div>
+    </div>
+
+    <label class="f-label">Your Name</label>
+    <input class="f-input" placeholder="First name" id="fName"/>
+    <label class="f-label">Email Address</label>
+    <input class="f-input" type="email" placeholder="you@email.com" id="fEmail"/>
+
+    <button class="modal-submit" id="mSubmit" onclick="pay()">Join Evee — <span id="mBtnPrice">$47/month</span></button>
+    <p class="modal-secure">Secured by Stripe · 256-bit SSL · Cancel anytime</p>
+    <div class="upsell-in-modal" id="uimBox">
+      <div class="uim-title">Want everything — forever?</div>
+      <div class="uim-body">Upgrade to Lifetime VIP for a one-time payment of $497 and unlock all 9 courses, Hook Vault, Money Dashboard, video lessons, and VIP coaching. No subscription, no recurring fees — yours forever.</div>
+      <button class="uim-btn" onclick="closeModal();showPage('upsellVip')">See Lifetime VIP — $497 One-Time</button>
+    </div>
+  </div>
+</div>
 </body>
 </html>
